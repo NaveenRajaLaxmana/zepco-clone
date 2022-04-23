@@ -7,6 +7,8 @@ import FA from 'react-native-vector-icons/FontAwesome'
 import MA from 'react-native-vector-icons/MaterialIcons'
 const menu = require('./assets/images/menu.png')
 const wallet = require('./assets/images/wallet.png')
+import {useNavigation} from '@react-navigation/native'
+
 const bannerimages = [
   {
     id:1,
@@ -58,6 +60,7 @@ const trendingData = [
 ]
 
 const Header = () => {
+  const navigation =useNavigation()
   const {height,width} = useWindowDimensions()
  return (
   <View style={{ height: height*0.078,backgroundColor:mainBgcolor,paddingHorizontal:18,alignItems:'center',justifyContent:'space-around',flexDirection:'row'}}>
@@ -69,8 +72,9 @@ const Header = () => {
   />
   <SA name='arrow-down' size={10} color="orange"/>
   </View>
-  
+  <TouchableOpacity onPress={() => navigation.navigate('settings')}>
   <Image source={menu} resizeMode="cover" style={{ width:25,height:"30%",tintColor:'orange' }}/>
+  </TouchableOpacity>
 </View>
  )
 }
