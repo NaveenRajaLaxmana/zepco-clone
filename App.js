@@ -1,7 +1,7 @@
 import React from 'react'
 import { View,Text,useWindowDimensions,SafeAreaView,Image,TouchableOpacity} from 'react-native'
 import {ScrollView} from 'react-native-gesture-handler'
-import HomeScreen from './HomeScreen'
+import HomeScreen from './screens/HomeScreen'
 import { NavigationContainer,useNavigation } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import MI from 'react-native-vector-icons/MaterialIcons'
@@ -9,6 +9,8 @@ import FA from 'react-native-vector-icons/FontAwesome'
 import SI from 'react-native-vector-icons/SimpleLineIcons'
 import AD from 'react-native-vector-icons/AntDesign'
 import { mainBgcolor,textcolor,whiteboxcolor,whiteshadeBgcolor } from './utilities/colors'
+import Orders from './screens/orders'
+import SingleItem from './screens/SingleItem'
 
 const Stack = createNativeStackNavigator()
 const wallet = require('./assets/images/wallet.png')
@@ -29,7 +31,7 @@ return (
 
 const Settings = () => {
   const {height,width} = useWindowDimensions()
-  
+  const navigation = useNavigation()
   return (
     <SafeAreaView style={{ flex:1 }}>
     <ScrollView style={{ flex:1 }}>
@@ -78,86 +80,86 @@ const Settings = () => {
       </View>
 
       <View>
-        <View style={{ flexDirection:'row',justifyContent:'space-between',padding:10,margin:10 }}>
+        <TouchableOpacity onPress={() => navigation.navigate('orders')} style={{ flexDirection:'row',justifyContent:'space-between',padding:10,margin:10 }}>
         <View style={{ flexDirection:'row' }}>
           <SI name='handbag' size={20} color={textcolor}/>
           <Text style={{ color:'black' }}> Orders </Text>
         </View>
 
         <SI name='arrow-right' size={15} color="black"/>
-        </View>
+        </TouchableOpacity>
 
-        <View style={{ flexDirection:'row',justifyContent:'space-between',padding:10,margin:10 }}>
+        <TouchableOpacity style={{ flexDirection:'row',justifyContent:'space-between',padding:10,margin:10 }}>
         <View style={{ flexDirection:'row' }}>
           <SI name='heart' size={20} color={textcolor}/>
           <Text style={{ color:'black' }}> Manage Referrals </Text>
         </View>
 
         <SI name='arrow-right' size={15} color="black"/>
-        </View>
+        </TouchableOpacity>
 
-        <View style={{ flexDirection:'row',justifyContent:'space-between',padding:10,margin:10 }}>
+        <TouchableOpacity style={{ flexDirection:'row',justifyContent:'space-between',padding:10,margin:10 }}>
         <View style={{ flexDirection:'row' }}>
           <AD name='customerservice' size={20} color={textcolor}/>
           <Text style={{ color:'black' }}> Customer Support </Text>
         </View>
 
         <SI name='arrow-right' size={15} color="black"/>
-        </View>
+        </TouchableOpacity>
 
-        <View style={{ flexDirection:'row',justifyContent:'space-between',padding:10,margin:10 }}>
+        <TouchableOpacity style={{ flexDirection:'row',justifyContent:'space-between',padding:10,margin:10 }}>
         <View style={{ flexDirection:'row' }}>
           <SI name='location-pin' size={20} color={textcolor}/>
           <Text style={{ color:'black' }}> Address </Text>
         </View>
 
         <SI name='arrow-right' size={15} color="black"/>
-        </View>
+        </TouchableOpacity>
 
-        <View style={{ flexDirection:'row',justifyContent:'space-between',padding:10,margin:10 }}>
+        <TouchableOpacity style={{ flexDirection:'row',justifyContent:'space-between',padding:10,margin:10 }}>
         <View style={{ flexDirection:'row' }}>
           <SI name='reload' size={20} color={textcolor}/>
           <Text style={{ color:'black' }}> Refunds </Text>
         </View>
 
         <SI name='arrow-right' size={15} color="black"/>
-        </View>
+        </TouchableOpacity>
 
-        <View style={{ flexDirection:'row',justifyContent:'space-between',padding:10,margin:10 }}>
+        <TouchableOpacity style={{ flexDirection:'row',justifyContent:'space-between',padding:10,margin:10 }}>
         <View style={{ flexDirection:'row' }}>
           <SI name='user' size={20} color={textcolor}/>
           <Text style={{ color:'black' }}>Profile </Text>
         </View>
 
         <SI name='arrow-right' size={15} color="black"/>
-        </View>
+        </TouchableOpacity>
 
-        <View style={{ flexDirection:'row',justifyContent:'space-between',padding:10,margin:10 }}>
+        <TouchableOpacity style={{ flexDirection:'row',justifyContent:'space-between',padding:10,margin:10 }}>
         <View style={{ flexDirection:'row' }}>
           <MI name='fiber-new' size={20} color={textcolor}/>
           <Text style={{ color:'black' }}> Suggest Products </Text>
         </View>
 
         <SI name='arrow-right' size={15} color="black"/>
-        </View>
+        </TouchableOpacity>
 
-        <View style={{ flexDirection:'row',justifyContent:'space-between',padding:10,margin:10 }}>
+        <TouchableOpacity style={{ flexDirection:'row',justifyContent:'space-between',padding:10,margin:10 }}>
         <View style={{ flexDirection:'row' }}>
           <SI name='info' size={20} color={textcolor}/>
           <Text style={{ color:'black' }}> General Info </Text>
         </View>
 
         <SI name='arrow-right' size={15} color="black"/>
-        </View>
+        </TouchableOpacity>
 
-        <View style={{ flexDirection:'row',justifyContent:'space-between',padding:10,margin:10 }}>
+        <TouchableOpacity style={{ flexDirection:'row',justifyContent:'space-between',padding:10,margin:10 }}>
         <View style={{ flexDirection:'row' }}>
           <MI name='notifications-none' size={20} color={textcolor}/>
           <Text style={{ color:'black' }}> Notifications </Text>
         </View>
 
         <SI name='arrow-right' size={15} color="black"/>
-        </View>
+        </TouchableOpacity>
       </View>
 
       <TouchableOpacity style={{ borderRadius:10,padding:5,borderColor:'grren',borderWidth:1,alignSelf:'center',marginBottom:50 }}>
@@ -172,13 +174,27 @@ const App = () => {
   const {height,width} = useWindowDimensions()
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='settings'>
+      <Stack.Navigator initialRouteName='home'>
         <Stack.Screen name='home' component={HomeScreen} options={{
           headerShown:false
         }}/>
         <Stack.Screen name='settings' component={Settings} options={{
           header:({route}) => <Header name={route.name}/>
         }}/>
+        <Stack.Screen 
+          name='orders'
+          component={Orders}
+          options={{
+            header:({route}) => <Header name={route.name}/>
+          }}
+        />
+        <Stack.Screen 
+        name='singleItem'
+        component={SingleItem}
+        options={{
+          header:({route}) => <Header name={route.name}/>
+        }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   )

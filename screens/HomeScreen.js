@@ -1,58 +1,58 @@
 import React from 'react'
 import { View,Text,useWindowDimensions,SafeAreaView,Image,TextInput,FlatList,TouchableOpacity,ImageBackground } from 'react-native'
 import {ScrollView} from 'react-native-gesture-handler'
-import { mainBgcolor,textcolor,whiteboxcolor,whiteshadeBgcolor } from './utilities/colors'
+import { mainBgcolor,textcolor,whiteboxcolor,whiteshadeBgcolor } from '../utilities/colors'
 import SA from 'react-native-vector-icons/SimpleLineIcons'
 import FA from 'react-native-vector-icons/FontAwesome'
 import MA from 'react-native-vector-icons/MaterialIcons'
-const menu = require('./assets/images/menu.png')
-const wallet = require('./assets/images/wallet.png')
+const menu = require('../assets/images/menu.png')
+const wallet = require('../assets/images/wallet.png')
 import {useNavigation} from '@react-navigation/native'
 
 const bannerimages = [
   {
     id:1,
-    image: require('./assets/images/banner-image.jpg')
+    image: require('../assets/images/banner-image.jpg')
   },
   {
     id:2,
-    image: require('./assets/images/banner-image2.jpg')
+    image: require('../assets/images/banner-image2.jpg')
   },
   {
     id:3,
-    image: require('./assets/images/banner-image3.jpg')
+    image: require('../assets/images/banner-image3.jpg')
   },
   {
     id:4,
-    image: require('./assets/images/banner-image4.jpg')
+    image: require('../assets/images/banner-image4.jpg')
   },
 ]
 
 const trendingData = [
   {
     id:1,
-    image:require('./assets/images/tomato.png'),
+    image:require('../assets/images/tomato.png'),
     name:"TOMATO LOCAL",
     size:'500g',
     price:'18'
   },
   {
     id:2,
-    image:require('./assets/images/onion.png'),
+    image:require('../assets/images/onion.png'),
     name:"Onion",
     size:'500g',
     price:'22'
   },
   {
     id:3,
-    image:require('./assets/images/tomato.png'),
+    image:require('../assets/images/tomato.png'),
     name:"Tomato",
     size:'500g',
     price:'18'
   },
   {
     id:4,
-    image:require('./assets/images/onion.png'),
+    image:require('../assets/images/onion.png'),
     name:"Onion LOCAL",
     size:'500g',
     price:'25'
@@ -84,7 +84,7 @@ const Footer = () => {
   return (
     <View style={{ position:'absolute',bottom:0,left:0,flexDirection:'row',height:height*0.08,width:width,backgroundColor:mainBgcolor }}>
       <View style={{ width:"20%",height:"100%",justifyContent:'center',alignItems:'center' }}>
-        <Image source={require('./assets/images/offertag.png')} resizeMode="cover" style={{ width: "60%",height:"60%"}}/>
+        <Image source={require('../assets/images/offertag.png')} resizeMode="cover" style={{ width: "60%",height:"60%"}}/>
       </View>
       <View style={{ width:"80%",height:"100%",padding:5 }}>
         <Text style={{ color:'white' }}>Free Delivery</Text>
@@ -203,11 +203,12 @@ const HomeScreen = () => {
   }
   const TrendingBox = ({item}) => {
     const {height,width} = useWindowDimensions()
+    const navigation = useNavigation()
    
     return (
-      <View style={{ height:"97%",width:width*0.3,backgroundColor:whiteboxcolor,marginRight:15,borderRadius:10 }}>
+      <TouchableOpacity onPress={() => navigation.navigate('singleItem',{item:item})} style={{ height:"97%",width:width*0.3,backgroundColor:whiteboxcolor,marginRight:15,borderRadius:10 }}>
          <View style={{ position:'absolute',right:0,top:-8, height:45,width:40 }}>
-          <ImageBackground source={require('./assets/images/offer.png')} style={{ height:"100%",width:"100%",flexWrap:'wrap',justifyContent:'center',alignItems:'center' }}>
+          <ImageBackground source={require('../assets/images/offer.png')} style={{ height:"100%",width:"100%",flexWrap:'wrap',justifyContent:'center',alignItems:'center' }}>
             <View style={{flexWrap:'wrap',alignItems:'center',alignSelf:'center' }}>
             <Text style={{ color:'white',fontSize:13,textAlign:'center' }}>4% </Text>
             <Text style={{ color:'white',fontSize:13,textAlign:'center' }}>off</Text>
@@ -234,7 +235,7 @@ const HomeScreen = () => {
           </View>
           
         </View>
-      </View>
+      </TouchableOpacity>
     )
   }
   const BannerPart = () => {
