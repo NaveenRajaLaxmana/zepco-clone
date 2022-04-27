@@ -28,7 +28,7 @@ const bannerimages = [
   },
 ]
 
-const trendingData = [
+export const trendingData = [
   {
     id:1,
     image:require('../assets/images/tomato.png'),
@@ -157,7 +157,7 @@ const HomeScreen = () => {
       </View>
     )
   }
-  const Trending = () => {
+  export const Trending = () => {
     const {height,width} = useWindowDimensions()
     return (
       <View style={{ height:height*0.31,marginTop:12,marginLeft:20 }}>
@@ -201,7 +201,7 @@ const HomeScreen = () => {
       </View>
     )
   }
-  const TrendingBox = ({item}) => {
+  export const TrendingBox = ({item}) => {
     const {height,width} = useWindowDimensions()
     const navigation = useNavigation()
    
@@ -258,12 +258,14 @@ const HomeScreen = () => {
   }
   const SearchBar = () => {
     const {height,width} = useWindowDimensions()
+    const navigation = useNavigation()
     return (
       <View style={{ marginVertical:5,marginHorizontal:20,height:60,width:width*0.89,borderRadius:30,paddingLeft:10, backgroundColor:whiteboxcolor,justifyContent:'center',alignItems:'center',flexDirection:'row' }}>
       <FA name='search' size={20} color="black"/>
     <TextInput 
       style={{ width:"90%",height:"100%",color:'black',paddingLeft:15 }}
       placeholder="Search"
+      onFocus={() => navigation.navigate('searchpage')}
     />
    </View>
     )

@@ -11,6 +11,7 @@ import AD from 'react-native-vector-icons/AntDesign'
 import { mainBgcolor,textcolor,whiteboxcolor,whiteshadeBgcolor } from './utilities/colors'
 import Orders from './screens/orders'
 import SingleItem from './screens/SingleItem'
+import SearchPage, { SeacrhPageHeader } from './screens/SearchPage'
 
 const Stack = createNativeStackNavigator()
 const wallet = require('./assets/images/wallet.png')
@@ -193,6 +194,13 @@ const App = () => {
         component={SingleItem}
         options={{
           header:({route}) => <Header name={route.name}/>
+        }}
+        />
+        <Stack.Screen 
+        name='searchpage'
+        component={SearchPage}
+        options={{
+          header:({route}) => <SeacrhPageHeader />
         }}
         />
       </Stack.Navigator>
