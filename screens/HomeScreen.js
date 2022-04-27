@@ -64,7 +64,9 @@ const Header = () => {
   const {height,width} = useWindowDimensions()
  return (
   <View style={{ height: height*0.078,backgroundColor:mainBgcolor,paddingHorizontal:18,alignItems:'center',justifyContent:'space-around',flexDirection:'row'}}>
+  <TouchableOpacity onPress={() => navigation.navigate('wallet')}>
   <Image source={wallet} resizeMode="cover" style={{ width:25,height:"50%" }}/>
+    </TouchableOpacity>
   <View style={{ flexDirection:'row',justifyContent:'center',alignItems:'center' }}>
   <TextInput 
     style={{ width:"70%",height:"50%",backgroundColor:'transparent',color:'white',borderColor:'none' }}

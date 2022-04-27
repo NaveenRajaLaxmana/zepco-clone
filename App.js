@@ -12,6 +12,7 @@ import { mainBgcolor,textcolor,whiteboxcolor,whiteshadeBgcolor } from './utiliti
 import Orders from './screens/orders'
 import SingleItem from './screens/SingleItem'
 import SearchPage, { SeacrhPageHeader } from './screens/SearchPage'
+import Wallet, { WalletPageHeader } from './screens/Wallet'
 
 const Stack = createNativeStackNavigator()
 const wallet = require('./assets/images/wallet.png')
@@ -201,6 +202,13 @@ const App = () => {
         component={SearchPage}
         options={{
           header:({route}) => <SeacrhPageHeader />
+        }}
+        />
+        <Stack.Screen 
+        name='wallet'
+        component={Wallet}
+        options={{
+          header:({route}) => <WalletPageHeader />
         }}
         />
       </Stack.Navigator>
