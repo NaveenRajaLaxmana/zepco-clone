@@ -36,6 +36,7 @@ const Wallet = () => {
             <View>
                 <TextInput 
                     placeholder='Your Balance'
+                    keyboardType='number-pad'
                     style={{ borderBottomWidth:1,borderBottomColor:'grey',height:45,color:'black' }}
                     placeholderTextColor='grey'
                 />
@@ -54,6 +55,7 @@ const Wallet = () => {
         <View style={{ height:height*0.33,marginHorizontal:20,borderRadius:10,padding:20,backgroundColor:whiteboxcolor,justifyContent:'space-between',borderWidth:1,borderColor:'black' }}>
             <TextInput 
                 placeholder='1000'
+                keyboardType='numeric'
                 style={{ height:50,borderRadius:10,backgroundColor:'#f2f7f0',paddingLeft:8 }}
             />
             <View style={{ flexDirection:'row',justifyContent:'space-between' }}>

@@ -10,8 +10,8 @@ import {Trending,TrendingBox,trendingData} from './HomeScreen'
 const SingleItem = ({route,navigation}) => {
     const { height,width } = useWindowDimensions()
     const [showproduct,setShowproduct] = useState(false)
-    
-    const item =route.params.item.item
+   
+    const item =route.params.item.item || route.params.item
   return (
     <ScrollView>
         <View style={{ height:height*0.35,backgroundColor:'white',padding:10 }}>

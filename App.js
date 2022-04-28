@@ -13,6 +13,7 @@ import Orders from './screens/orders'
 import SingleItem from './screens/SingleItem'
 import SearchPage, { SeacrhPageHeader } from './screens/SearchPage'
 import Wallet, { WalletPageHeader } from './screens/Wallet'
+import SeparateCategories from './screens/SeparateCategories'
 
 const Stack = createNativeStackNavigator()
 const wallet = require('./assets/images/wallet.png')
@@ -209,6 +210,13 @@ const App = () => {
         component={Wallet}
         options={{
           header:({route}) => <WalletPageHeader />
+        }}
+        />
+        <Stack.Screen 
+        name='singlecategory'
+        component={SeparateCategories}
+        options={{
+          header:({route}) => <Header name={route.name}/>
         }}
         />
       </Stack.Navigator>
