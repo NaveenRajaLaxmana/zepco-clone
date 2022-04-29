@@ -405,9 +405,9 @@ const HomeScreen = () => {
   
   const SeasonScroll = ({item}) => {
     const {height,width} = useWindowDimensions()
-    
+    const navigation = useNavigation();
     return (
-      <View style={{ height:"97%",width:width*0.34,backgroundColor:mainBgcolor,marginRight:10,borderRadius:10 }}>
+      <TouchableOpacity onPress={() => navigation.navigate('specialcategory')} style={{ height:"97%",width:width*0.34,backgroundColor:mainBgcolor,marginRight:10,borderRadius:10 }}>
         <View style={{ height:"65%",width:"100%",padding:12, }}>
           <Image source={trendingData[0].image} resizeMode="cover" style={{height:"100%",width:"100%"}}/>
         </View>
@@ -416,7 +416,7 @@ const HomeScreen = () => {
           
           
         </View>
-      </View>
+      </TouchableOpacity>
     )
   }
   

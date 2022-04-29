@@ -14,6 +14,9 @@ import SingleItem from './screens/SingleItem'
 import SearchPage, { SeacrhPageHeader } from './screens/SearchPage'
 import Wallet, { WalletPageHeader } from './screens/Wallet'
 import SeparateCategories from './screens/SeparateCategories'
+import SpecialCategories from './screens/SpecialCategories'
+import CustomerSupport from './screens/CustomerSupport'
+import Address from './screens/Adresses'
 
 const Stack = createNativeStackNavigator()
 const wallet = require('./assets/images/wallet.png')
@@ -101,7 +104,7 @@ const Settings = () => {
         <SI name='arrow-right' size={15} color="black"/>
         </TouchableOpacity>
 
-        <TouchableOpacity style={{ flexDirection:'row',justifyContent:'space-between',padding:10,margin:10 }}>
+        <TouchableOpacity onPress={() => navigation.navigate('customerSupport')} style={{ flexDirection:'row',justifyContent:'space-between',padding:10,margin:10 }}>
         <View style={{ flexDirection:'row' }}>
           <AD name='customerservice' size={20} color={textcolor}/>
           <Text style={{ color:'black' }}> Customer Support </Text>
@@ -110,7 +113,7 @@ const Settings = () => {
         <SI name='arrow-right' size={15} color="black"/>
         </TouchableOpacity>
 
-        <TouchableOpacity style={{ flexDirection:'row',justifyContent:'space-between',padding:10,margin:10 }}>
+        <TouchableOpacity onPress={() => navigation.navigate('address')} style={{ flexDirection:'row',justifyContent:'space-between',padding:10,margin:10 }}>
         <View style={{ flexDirection:'row' }}>
           <SI name='location-pin' size={20} color={textcolor}/>
           <Text style={{ color:'black' }}> Address </Text>
@@ -215,6 +218,27 @@ const App = () => {
         <Stack.Screen 
         name='singlecategory'
         component={SeparateCategories}
+        options={{
+          header:({route}) => <Header name={route.name}/>
+        }}
+        />
+        <Stack.Screen 
+        name='specialcategory'
+        component={SpecialCategories}
+        options={{
+          header:({route}) => <Header name={route.name}/>
+        }}
+        />
+        <Stack.Screen 
+        name='customerSupport'
+        component={CustomerSupport}
+        options={{
+          header:({route}) => <Header name={route.name}/>
+        }}
+        />
+        <Stack.Screen 
+        name='address'
+        component={Address}
         options={{
           header:({route}) => <Header name={route.name}/>
         }}
